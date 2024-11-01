@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistem Manajemen Karyawan</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Sidebar -->
+    <div class="d-flex">
+        <nav class="bg-primary p-3 text-white vh-100" style="width: 250px;">
+            <h4 class="text-center">Manajemen Karyawan</h4>
+            <ul class="nav flex-column mt-4">
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="#" onclick="tampilkanKonten('dashboard')">Dashboard</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="#" onclick="tampilkanKonten('dataPegawai')">Data Pegawai</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="#" onclick="tampilkanKonten('absensi')">Absensi</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="#" onclick="tampilkanKonten('jabatan')">Jabatan</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="#" onclick="tampilkanKonten('divisi')">Divisi</a>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- Konten Utama -->
+        <div class="p-4" style="flex: 1;">
+            <div id="konten"></div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- JavaScript Kustom -->
+    <script>
+        // Memuat konten awal
+        document.addEventListener('DOMContentLoaded', function() {
+            tampilkanKonten('dashboard');
+        });
+
+        // Fungsi untuk menampilkan konten berdasarkan bagian yang diklik
+        function tampilkanKonten(bagian) {
+            const konten = document.getElementById('konten');
+            let isiKonten = '';
+
+            switch (bagian) {
+                case 'dashboard':
+                    isiKonten = `
+                        <h3>Dashboard</h3>
+                        <div class="row mt-4">
+                            <div class="col-md-3">
+                                <div class="card text-center">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Total Karyawan</h5>
+                                        <p class="card-text">20</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="card text-center">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Hadir Hari Ini</h5>
+                                        <p class="card-text">15</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="card text-center">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Cuti</h5>
+                                        <p class="card-text">5</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="card text-center">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Tugas Tertunda</h5>
+                                        <p class="card-text">7</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                    break;
+
+                case 'dataPegawai':
+                    isiKonten = `
+                        <h3>Data Pegawai</h3>
+                        <table class="table mt-4">
+                            <thead class="table-dark">
+                                <tr>
+                                    <th>No</th>
+                                    <th>Nama</th>
+                                    <th>Jabatan</th>
+                                    <th>Divisi</th>
+                                    <th>Email</th>
+                                    <th>No. Telepon</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>1</td><td>John Doe</td><td>Manajer</td><td>HR</td><td>johndoe@example.com</td><td>08123456789</td></tr>
+                                <tr><td>2</td><td>Jane Smith</td><td>Developer</td><td>IT</td><td>janesmith@example.com</td><td>08987654321</td></tr>
+                                <!-- Tambahkan lebih banyak data pegawai sesuai kebutuhan -->
+                            </tbody>
+                        </table>
+                    `;
+                    break;
+
+                case 'absensi':
+                    isiKonten = `
+                        <h3>Absensi</h3>
+                        <table class="table mt-4">
+                            <thead class="table-dark">
+                                <tr>
+                                    <th>No</th>
+                                    <th>Nama</th>
+                                    <th>Jabatan</th>
+                                    <th>Tanggal</th>
+                                    <th>Jam Masuk</th>
+                                    <th>Jam Pulang</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>1</td><td>John Doe</td><td>Manajer</td><td>01/11/2024</td><td>08:00</td><td>17:00</td><td>Hadir</td></tr>
+                                <tr><td>2</td><td>Jane Smith</td><td>Developer</td><td>01/11/2024</td><td>08:15</td><td>17:00</td><td>Hadir</td></tr>
+                                <!-- Tambahkan lebih banyak data absensi sesuai kebutuhan -->
+                            </tbody>
+                        </table>
+                    `;
+                    break;
+
+                case 'jabatan':
+                    isiKonten = `
+                        <h3>Jabatan</h3>
+                        <table class="table mt-4">
+                            <thead class="table-dark">
+                                <tr>
+                                    <th>No</th>
+                                    <th>Jabatan</th>
+                                    <th>Deskripsi</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>1</td><td>Manajer</td><td>Mengelola operasi departemen</td></tr>
+                                <tr><td>2</td><td>Developer</td><td>Bertanggung jawab atas pengembangan perangkat lunak</td></tr>
+                                <!-- Tambahkan lebih banyak jabatan sesuai kebutuhan -->
+                            </tbody>
+                        </table>
+                    `;
+                    break;
+
+                case 'divisi':
+                    isiKonten = `
+                        <h3>Divisi</h3>
+                        <table class="table mt-4">
+                            <thead class="table-dark">
+                                <tr>
+                                    <th>No</th>
+                                    <th>Divisi</th>
+                                    <th>Deskripsi</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>1</td><td>HR</td><td>Departemen Sumber Daya Manusia</td></tr>
+                                <tr><td>2</td><td>IT</td><td>Departemen Teknologi Informasi</td></tr>
+                                <!-- Tambahkan lebih banyak divisi sesuai kebutuhan -->
+                            </tbody>
+                        </table>
+                    `;
+                    break;
+            }
+
+            konten.innerHTML = isiKonten;
+        }
+    </script>
+</body>
+</html>
